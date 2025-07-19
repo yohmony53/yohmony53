@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exclusive Video Collection</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: #f9fafb;
+      color: #111;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Header + clearer notice */
+    .header {
+      width: 100%;
+      padding: 1rem;
+      text-align: center;
+      background: #ffffffdd;
+      backdrop-filter: blur(8px);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 1px 5px rgba(0, 0, 0, 0.08);
+    }
+
+    .header h1 { font-size: 1.75rem; margin-bottom: 0.35rem; }
+
+    .note {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #d32f2f;
+    }
+
+    /* Masonry grid */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      padding: 2rem;
+      max-width: 1400px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+      transition: transform 0.2s;
+    }
+    .card:hover { transform: translateY(-4px); }
+    .card video, .card img { width: 100%; height: auto; display: block; }
+
+    /* Special styling for proof video */
+    .card.proof {
+      border: 4px solid #2196f3;
+      box-shadow: 0 0 20px rgba(33,150,243,0.6);
+      grid-column: span 2; /* wider */
+    }
+    .hint {
+      background: #2196f3;
+      color: #fff;
+      padding: 8px 0;
+      font-size: 1rem;
+      font-weight: 800;
+      text-align: center;
+      letter-spacing: 0.4px;
+    }
+
+    /* Floating Telegram widget */
+    .contact-widget {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #fff;
+      border-radius: 9999px;
+      padding: 0.65rem 1.25rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      z-index: 1001;
+    }
+    .contact-widget a {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: #0088cc;
+      font-weight: 700;
+      gap: 0.6rem;
+      font-size: 1rem;
+    }
+    .contact-widget svg { width: 32px; height: 32px; }
+
+    @media (max-width: 600px) {
+      .header h1 { font-size: 1.3rem; }
+      .note { font-size: 1rem; }
+      .contact-widget { bottom: 10px; right: 10px; padding: 0.5rem 1rem; }
+      .contact-widget svg { width: 24px; height: 24px; }
+      .hint { font-size: 0.95rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <h1>Exclusive Video Collection</h1>
+    <p class="note">Note: Videos may take up to 20 seconds to start playing.</p>
+  </header>
+
+  <main id="gallery" class="gallery" aria-label="Video Gallery"></main>
+
+  <div class="contact-widget">
+    <a href="https://bit.ly/koodthy" target="_blank" rel="noopener">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" aria-hidden="true">
+        <circle cx="120" cy="120" r="120" fill="#0088cc" />
+        <path d="M50 123.6l30.8 11.9 11.8 37.6c1.5 4.5 2.7 6.2 5.6 6.2 3 0 4.3-1.2 6-2.7l15-14.5 31.2 22.8c5.7 3.1 9.8 1.5 11.2-5.3l20.3-95.8c2-9.5-3.4-13.9-9.7-11.5L43.7 106.5c-9.3 3.7-9.2 9-1.6 11.3z" fill="#fff"/>
+      </svg>
+      Tap here to buy instantly on Telegram
+    </a>
+  </div>
+
+  <script>
+    const media = [
+      { name: "applepie1", type: "exe", real: "mp4" },
+      { name: "applepie2", type: "exe", real: "mp4" },
+      { name: "applepie3", type: "exe", real: "mp4" },
+      { name: "applepie4", type: "exe", real: "mp4" },
+      { name: "applepie5", type: "exe", real: "mp4" },
+      { name: "applepie6", type: "exe", real: "mp4" },
+      { name: "applepie7", type: "exe", real: "mp4" },
+      { name: "applepie8", type: "exe", real: "mp4" },
+      { name: "applepie9", type: "exe", real: "mp4" },
+      { name: "applepie10", type: "exe", real: "mp4" },
+      { name: "applepie11", type: "exe", real: "mp4" },
+      { name: "applepie12", type: "exe", real: "mp4" },
+      { name: "applepie13", type: "exe", real: "mp4" },
+      { name: "applepie14", type: "exe", real: "mp4" },
+      { name: "applepie15", type: "exe", real: "mp4" },
+      { name: "applepie16", type: "exe", real: "mp4" },
+      { name: "applepie17", type: "exe", real: "mp4" },
+      { name: "applepie18", type: "php", real: "jpg" },
+      { name: "applepie19", type: "php", real: "jpg" },
+      { name: "applepie20", type: "php", real: "jpg" },
+      { name: "applepie21", type: "exe", real: "mp4" },
+      { name: "applepie22", type: "exe", real: "mp4" },
+      { name: "applepie23", type: "exe", real: "mp4" },
+      { name: "applepie24", type: "exe", real: "mp4" },
+      { name: "applepie25", type: "exe", real: "mp4" },
+      { name: "applepie26", type: "exe", real: "mp4" },
+      { name: "applepieVIP26", type: "exe", real: "mp4" },
+      { name: "applepieVIPPro26", type: "exe", real: "mp4" },
+      { name: "applepie27", type: "php", real: "jpg" },
+      { name: "applepie28", type: "php", real: "jpg" },
+      { name: "applepie29", type: "php", real: "jpg" },
+      { name: "applepie30", type: "php", real: "jpg" },
+      { name: "applepie31", type: "php", real: "jpg" },
+      { name: "applepie32", type: "php", real: "jpg" },
+      { name: "applepie33", type: "php", real: "mp4" }
+    ];
+
+    const gallery = document.getElementById("gallery");
+
+    media.forEach(item => {
+      // Card container
+      const card = document.createElement("div");
+      card.className = "card";
+      const path = `${item.name}.${item.type}`;
+
+      // Add media
+      if (item.real === "jpg") {
+        const img = document.createElement("img");
+        img.src = path;
+        img.alt = item.name;
+        img.loading = "lazy";
+        card.appendChild(img);
+      } else if (item.real === "mp4") {
+        const video = document.createElement("video");
+        video.controls = true;
+        video.preload = "metadata";
+        video.innerHTML = `<source src="${path}" type="video/mp4" />`;
+        card.appendChild(video);
+      }
+
+      // Special handling for proof video
+      if (item.name === "applepie33") {
+        card.classList.add("proof");
+
+        // Create hint bar and insert BEFORE video
+        const hintBar = document.createElement("div");
+        hintBar.className = "hint";
+        hintBar.textContent = "STRONG PROOF OF OWNERSHIP – WATCH THIS FIRST";
+        card.insertBefore(hintBar, card.firstChild);
+      }
+
+      // Append card to gallery
+      gallery.appendChild(card);
+    });
+  </script>
+</body>
+</html>
